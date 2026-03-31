@@ -1,0 +1,868 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Rosimeri Rodrigues - Doces Finos Artesanais</title>
+    <!-- Importing Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&family=Lora:ital,wght@0,400;0,500;1,400&family=Great+Vibes&family=Cinzel:wght@400;600&display=swap" rel="stylesheet">
+    <!-- FontAwesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <style>
+        :root {
+            --primary-color: #d4af37; /* Gold */
+            --primary-dark: #b8982e;
+            --bg-color: #1a1614; /* Very dark chocolate */
+            --bg-lighter: #26201e;
+            --text-main: #f4ede4;
+            --text-muted: #b5a89e;
+            --accent: #e8d0a5;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Lora', serif;
+            background-color: var(--bg-color);
+            color: var(--text-main);
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+
+        h1, h2, h3, h4, .font-display {
+            font-family: 'Playfair Display', serif;
+        }
+
+        /* Hero Section */
+        .hero {
+            position: relative;
+            height: 60vh;
+            min-height: 400px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            background-image: url('img/premium_bg_1774968654331.png');
+            background-size: cover;
+            background-position: center;
+            background-attachment: fixed;
+            border-bottom: 2px solid var(--primary-color);
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0; left: 0; width: 100%; height: 100%;
+            background: linear-gradient(to bottom, rgba(26, 22, 20, 0.4), rgba(26, 22, 20, 0.95));
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 1;
+            padding: 0 20px;
+        }
+
+        .hero h1 {
+            font-family: 'Great Vibes', cursive;
+            font-size: 7rem;
+            background: linear-gradient(to right, #e8d0a5, #d4af37, #997a15, #e8d0a5);
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+            text-shadow: 2px 2px 10px rgba(0,0,0,0.5);
+            margin-bottom: 0px;
+            font-weight: 400;
+            line-height: 1.2;
+        }
+
+        .hero p {
+            font-family: 'Cinzel', serif;
+            font-size: 1.3rem;
+            color: var(--primary-color);
+            letter-spacing: 6px;
+            text-transform: uppercase;
+            position: relative;
+            display: inline-block;
+            margin-top: 5px;
+        }
+
+        .hero p::before, .hero p::after {
+            content: '';
+            position: absolute;
+            top: 50%;
+            width: 40px;
+            height: 1px;
+            background: var(--primary-color);
+        }
+
+        .hero p::before { right: 100%; margin-right: 15px; }
+        .hero p::after { left: 100%; margin-left: 15px; }
+
+        /* Navigation */
+        .nav-container {
+            position: sticky;
+            top: 0;
+            background: rgba(26, 22, 20, 0.95);
+            backdrop-filter: blur(10px);
+            z-index: 100;
+            padding: 15px 0;
+            border-bottom: 1px solid rgba(212, 175, 55, 0.2);
+            box-shadow: 0 4px 20px rgba(0,0,0,0.5);
+        }
+
+        .nav-buttons {
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+            flex-wrap: wrap;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        .nav-btn {
+            background: transparent;
+            color: var(--text-muted);
+            border: 1px solid rgba(212,175,55,0.1);
+            padding: 8px 20px;
+            border-radius: 30px;
+            cursor: pointer;
+            font-size: 0.95rem;
+            font-family: 'Lora', serif;
+            transition: all 0.3s ease;
+        }
+
+        .nav-btn:hover {
+            color: var(--primary-color);
+            border-color: rgba(212,175,55,0.4);
+        }
+
+        .nav-btn.active {
+            color: var(--bg-color);
+            background: var(--primary-color);
+            border-color: var(--primary-color);
+            box-shadow: 0 0 15px rgba(212, 175, 55, 0.3);
+            font-weight: 600;
+        }
+
+        /* Container & Categories */
+        .main-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 60px 20px;
+        }
+
+        .category {
+            display: none;
+            animation: fadeIn 0.6s ease;
+        }
+
+        .category.active {
+            display: block;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        /* Category Header */
+        .category-header {
+            display: flex;
+            align-items: center;
+            gap: 40px;
+            margin-bottom: 50px;
+        }
+
+        .category-image-wrap {
+            flex: 0 0 40%;
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+            border: 1px solid rgba(212, 175, 55, 0.2);
+        }
+
+        .category-image-wrap img {
+            width: 100%;
+            height: auto;
+            display: block;
+            transition: transform 0.5s ease;
+        }
+
+        .category-image-wrap:hover img {
+            transform: scale(1.05);
+        }
+
+        .category-info {
+            flex: 1;
+        }
+
+        .category h2 {
+            font-size: 2.8rem;
+            color: var(--primary-color);
+            margin-bottom: 15px;
+            position: relative;
+            display: inline-block;
+        }
+
+        .category h2::after {
+            content: '';
+            position: absolute;
+            width: 60px;
+            height: 2px;
+            background: var(--primary-color);
+            bottom: -5px;
+            left: 0;
+        }
+
+        .category-desc {
+            font-size: 1.1rem;
+            color: var(--text-muted);
+            font-style: italic;
+            line-height: 1.8;
+            margin-top: 15px;
+        }
+
+        @media (max-width: 768px) {
+            .category-header {
+                flex-direction: column-reverse;
+                text-align: center;
+                gap: 25px;
+            }
+            .category h2::after {
+                left: 50%;
+                transform: translateX(-50%);
+            }
+        }
+
+        /* Products Grid */
+        .products-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+            gap: 25px;
+            margin-bottom: 50px;
+        }
+
+        .product-card {
+            background: var(--bg-lighter);
+            border-radius: 8px;
+            padding: 25px;
+            position: relative;
+            border: 1px solid rgba(255,255,255,0.03);
+            transition: all 0.3s ease;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .product-card:hover {
+            transform: translateY(-5px);
+            border-color: rgba(212, 175, 55, 0.4);
+            box-shadow: 0 8px 25px rgba(0,0,0,0.4);
+            background: #2b2422;
+        }
+
+        .product-name {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.4rem;
+            color: var(--accent);
+            margin-bottom: 12px;
+            padding-right: 70px; /* Space for badge if needed */
+        }
+
+        .product-desc {
+            font-size: 0.95rem;
+            color: var(--text-muted);
+            flex-grow: 1;
+            margin-bottom: 25px;
+        }
+
+        .product-footer {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-end;
+            margin-top: auto;
+            border-top: 1px dashed rgba(255,255,255,0.1);
+            padding-top: 15px;
+        }
+
+        .product-price {
+            font-size: 1.5rem;
+            color: var(--primary-color);
+            font-weight: 500;
+        }
+
+        .product-unit {
+            font-size: 0.85rem;
+            color: #888;
+            font-weight: normal;
+        }
+
+        .badge {
+            position: absolute;
+            top: 25px;
+            right: 25px;
+            background: var(--primary-color);
+            color: var(--bg-color);
+            padding: 4px 12px;
+            border-radius: 12px;
+            font-size: 0.7rem;
+            font-weight: bold;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            box-shadow: 0 2px 8px rgba(212, 175, 55, 0.3);
+        }
+
+        /* Info Box */
+        .info-box {
+            background: rgba(212, 175, 55, 0.05);
+            border: 1px solid rgba(212, 175, 55, 0.2);
+            padding: 40px;
+            border-radius: 8px;
+            text-align: center;
+            margin: 60px auto 20px;
+            max-width: 800px;
+            position: relative;
+        }
+
+        .info-box::before {
+            content: '✧';
+            position: absolute;
+            top: -20px;
+            left: 50%;
+            transform: translateX(-50%);
+            font-size: 2rem;
+            color: var(--primary-color);
+            background: var(--bg-color);
+            padding: 0 15px;
+        }
+
+        .info-box h3 {
+            color: var(--primary-color);
+            font-size: 1.8rem;
+            margin-bottom: 20px;
+        }
+
+        .info-box p {
+            color: var(--text-muted);
+            margin-bottom: 10px;
+            font-size: 1.1rem;
+        }
+
+        .info-box strong {
+            color: var(--accent);
+            font-weight: 500;
+        }
+
+        /* Footer / Contact */
+        .footer {
+            background: #110e0c;
+            padding: 80px 20px;
+            text-align: center;
+            border-top: 1px solid rgba(212, 175, 55, 0.1);
+            margin-top: 40px;
+        }
+
+        .footer h3 {
+            font-size: 2.2rem;
+            color: var(--primary-color);
+            margin-bottom: 40px;
+        }
+
+        .contact-info {
+            display: flex;
+            justify-content: center;
+            gap: 30px;
+            flex-wrap: wrap;
+        }
+
+        .contact-item {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            background: rgba(255,255,255,0.02);
+            padding: 20px 40px;
+            border-radius: 40px;
+            border: 1px solid rgba(255,255,255,0.05);
+            transition: all 0.3s;
+        }
+
+        .contact-item:hover {
+            border-color: var(--primary-color);
+            background: rgba(212, 175, 55, 0.05);
+            transform: translateY(-3px);
+            box-shadow: 0 5px 15px rgba(0,0,0,0.3);
+        }
+
+        .contact-item .icon {
+            font-size: 1.5rem;
+        }
+
+        .contact-item span {
+            font-size: 1.1rem;
+            color: var(--text-main);
+        }
+
+        @media (max-width: 600px) {
+            .hero h1 { font-size: 4rem; }
+            .hero p { font-size: 0.85rem; letter-spacing: 3px; }
+            .hero p::before, .hero p::after { width: 20px; }
+            .contact-item { width: 100%; justify-content: center; }
+            .product-name { font-size: 1.2rem; }
+            .product-price { font-size: 1.3rem; }
+        }
+    </style>
+</head>
+<body>
+
+    <header class="hero">
+        <div class="hero-content">
+            <h1>Rosimere Rodrigues</h1>
+            <p>Bolos & Doces finos</p>
+        </div>
+    </header>
+
+    <div class="nav-container">
+        <div class="nav-buttons">
+            <button class="nav-btn active" data-category="trufas">Trufas</button>
+            <button class="nav-btn" data-category="brigadeiro">Brigadeiros</button>
+            <button class="nav-btn" data-category="chocolates">Chocolates Gourmet</button>
+            <button class="nav-btn" data-category="especiais">Docinhos Especiais</button>
+            <button class="nav-btn" data-category="tarteletes">Tarteletes</button>
+        </div>
+    </div>
+
+    <main class="main-content">
+        
+        <!-- TRUFAS -->
+        <section class="category active" id="trufas">
+            <div class="category-header">
+                <div class="category-info">
+                    <h2>Trufas Artesanais</h2>
+                    <p class="category-desc">Nossas trufas são verdadeiras joias. Doces irresistíveis banhados em chocolate nobre, com textura aveludada e sabores perfeitamente equilibrados que surpreendem a cada mordida.</p>
+                </div>
+                <div class="category-image-wrap">
+                    <img src="img/premium_truffle_1774968537458.png" alt="Trufas Finas Artesanais">
+                </div>
+            </div>
+            
+            <div class="products-grid">
+                <div class="product-card">
+                    <div class="product-name">Ao Leite com Licor</div>
+                    <div class="product-desc">Trufa de chocolate ao leite nobre com delicados toques de licor artesanal.</div>
+                    <div class="product-footer">
+                        <div class="product-price">R$ 3,70 <span class="product-unit">/ un</span></div>
+                    </div>
+                    <span class="badge">Popular</span>
+                </div>
+
+                <div class="product-card">
+                    <div class="product-name">Chocolate Branco</div>
+                    <div class="product-desc">Trufa premium com ganache macia de chocolate branco selecionado.</div>
+                    <div class="product-footer">
+                        <div class="product-price">R$ 3,70 <span class="product-unit">/ un</span></div>
+                    </div>
+                </div>
+
+                <div class="product-card">
+                    <div class="product-name">Ninho com Nutella®</div>
+                    <div class="product-desc">Irresistível e cremosa combinação do puro leite Ninho com creme de avelã Nutella.</div>
+                    <div class="product-footer">
+                        <div class="product-price">R$ 3,70 <span class="product-unit">/ un</span></div>
+                    </div>
+                    <span class="badge">Favorito</span>
+                </div>
+
+                <div class="product-card">
+                    <div class="product-name">Classic Banana</div>
+                    <div class="product-desc">Trufa aveludada com um delicado e aromático sabor de banana caramelizada.</div>
+                    <div class="product-footer">
+                        <div class="product-price">R$ 3,70 <span class="product-unit">/ un</span></div>
+                    </div>
+                </div>
+
+                <div class="product-card">
+                    <div class="product-name">Refrescância Maracujá</div>
+                    <div class="product-desc">Trufa cítrica e refrescante, equilibrando o doce do chocolate com o azedinho da fruta.</div>
+                    <div class="product-footer">
+                        <div class="product-price">R$ 3,70 <span class="product-unit">/ un</span></div>
+                    </div>
+                </div>
+
+                <div class="product-card">
+                    <div class="product-name">Ninho e Maracujá</div>
+                    <div class="product-desc">A perfeita harmonia e cremosidade do Ninho contrastando com o sabor vivo do maracujá.</div>
+                    <div class="product-footer">
+                        <div class="product-price">R$ 3,50 <span class="product-unit">/ un</span></div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="info-box">
+                <h3>✧ Experiência Exclusiva</h3>
+                <p>Nossas trufas são preparadas com ingredientes premium e podem ser personalizadas.</p>
+                <p>Consulte sobre opções de tamanhos comemorativos para os seus momentos especiais e eventos!</p>
+            </div>
+        </section>
+
+        <!-- BRIGADEIROS -->
+        <section class="category" id="brigadeiro">
+            <div class="category-header">
+                <div class="category-image-wrap">
+                    <img src="img/gourmet_brigadeiro_1774968552883.png" alt="Brigadeiros Gourmet">
+                </div>
+                <div class="category-info">
+                    <h2>Brigadeiros Gourmet</h2>
+                    <p class="category-desc">Uma reimaginação luxuosa do clássico brasileiro. Textura incrivelmente cremosa, enrolados meticulosamente e finalizados com confeitos belgas e nuts nobres.</p>
+                </div>
+            </div>
+            
+            <div class="products-grid">
+                <div class="product-card">
+                    <div class="product-name">Brigadeiro Belga</div>
+                    <div class="product-desc">O autêntico brigadeiro com chocolate blend, envolto em puro granulado belga premium.</div>
+                    <div class="product-footer">
+                        <div class="product-price">R$ 5,50 <span class="product-unit">/ un</span></div>
+                    </div>
+                    <span class="badge">Premium</span>
+                </div>
+
+                <div class="product-card">
+                    <div class="product-name">Bicho de Pé Silk</div>
+                    <div class="product-desc">Textura sedosa e o irresistível e nostálgico sabor de morango fresco.</div>
+                    <div class="product-footer">
+                        <div class="product-price">R$ 5,50 <span class="product-unit">/ un</span></div>
+                    </div>
+                </div>
+
+                <div class="product-card">
+                    <div class="product-name">Romeu e Julieta</div>
+                    <div class="product-desc">Brigadeiro de queijo cremoso harmonizado elegantemente com doce de goiaba.</div>
+                    <div class="product-footer">
+                        <div class="product-price">R$ 4,70 <span class="product-unit">/ un</span></div>
+                    </div>
+                </div>
+
+                <div class="product-card">
+                    <div class="product-name">Crème Brûlée</div>
+                    <div class="product-desc">Delicada massa de fava de baunilha sob uma inconfundível casquinha de açúcar maçaricado.</div>
+                    <div class="product-footer">
+                        <div class="product-price">R$ 4,00 <span class="product-unit">/ un</span></div>
+                    </div>
+                    <span class="badge">Signature</span>
+                </div>
+
+                <div class="product-card">
+                    <div class="product-name">Ninho com Nutella®</div>
+                    <div class="product-desc">O queridinho em versão brigadeiro. Leite maduro com avelãs intensas.</div>
+                    <div class="product-footer">
+                        <div class="product-price">R$ 4,20 <span class="product-unit">/ un</span></div>
+                    </div>
+                    <span class="badge">Favorito</span>
+                </div>
+
+                <div class="product-card">
+                    <div class="product-name">Raffaello e Amêndoas</div>
+                    <div class="product-desc">Creme de coco sofisticado coroado com uma amêndoa dourada crocante.</div>
+                    <div class="product-footer">
+                        <div class="product-price">R$ 4,20 <span class="product-unit">/ un</span></div>
+                    </div>
+                </div>
+
+                <div class="product-card">
+                    <div class="product-name">Rocher Crunche</div>
+                    <div class="product-desc">A experiência do chocolate com avelã e texturas crocantes refinadas.</div>
+                    <div class="product-footer">
+                        <div class="product-price">R$ 4,20 <span class="product-unit">/ un</span></div>
+                    </div>
+                </div>
+
+                <div class="product-card">
+                    <div class="product-name">Pistache Premium</div>
+                    <div class="product-desc">A joia verde. Brigadeiro cremoso de pistache envolto em pistaches recém-tostados.</div>
+                    <div class="product-footer">
+                        <div class="product-price">R$ 5,50 <span class="product-unit">/ un</span></div>
+                    </div>
+                    <span class="badge">Premium</span>
+                </div>
+            </div>
+        </section>
+
+        <!-- CHOCOLATES GOURMET -->
+        <section class="category" id="chocolates">
+            <div class="category-header">
+                <div class="category-info">
+                    <h2>Chocolates Delícia</h2>
+                    <p class="category-desc">Nossas obras de arte comestíveis. Bombons lapidados, copinhos de chocolate temperados à perfeição enriquecidos com recheios voluptuosos.</p>
+                </div>
+                <div class="category-image-wrap">
+                    <img src="img/fine_chocolates_1774968573671.png" alt="Bombons de Chocolate Finos">
+                </div>
+            </div>
+            
+            <div class="products-grid">
+                <div class="product-card">
+                    <div class="product-name">Copinho Rouge</div>
+                    <div class="product-desc">Copinho esculpido de chocolate preenchido com trufa rica de frutas vermelhas silvestres.</div>
+                    <div class="product-footer">
+                        <div class="product-price">R$ 5,50 <span class="product-unit">/ un</span></div>
+                    </div>
+                </div>
+
+                <div class="product-card">
+                    <div class="product-name">Pirâmide Ouro Doce</div>
+                    <div class="product-desc">Elegante pirâmide de chocolate branco recheada com puro doce de leite argentino.</div>
+                    <div class="product-footer">
+                        <div class="product-price">R$ 5,50 <span class="product-unit">/ un</span></div>
+                    </div>
+                </div>
+
+                <div class="product-card">
+                    <div class="product-name">Caixeta Morango Oculto</div>
+                    <div class="product-desc">Caixeta branca abraçando um creme de morango levemente aerado.</div>
+                    <div class="product-footer">
+                        <div class="product-price">R$ 5,50 <span class="product-unit">/ un</span></div>
+                    </div>
+                </div>
+
+                <div class="product-card">
+                    <div class="product-name">Jardim de Physalis</div>
+                    <div class="product-desc">Copinho contrastante de chocolate escuro adornado com creme Ninho e uma Physalis fresca.</div>
+                    <div class="product-footer">
+                        <div class="product-price">R$ 5,50 <span class="product-unit">/ un</span></div>
+                    </div>
+                    <span class="badge">Exótico</span>
+                </div>
+
+                <div class="product-card">
+                    <div class="product-name">Aliança de Casamento</div>
+                    <div class="product-desc">Bombom de frutas vermelhas polvilhado e decorado, perfeito para celebrações matrimoniais.</div>
+                    <div class="product-footer">
+                        <div class="product-price">R$ 5,50 <span class="product-unit">/ un</span></div>
+                    </div>
+                </div>
+
+                <div class="product-card">
+                    <div class="product-name">Coração Cappuccino</div>
+                    <div class="product-desc">As notas torradas do café nobre encapsuladas num coração de chocolate ao leite.</div>
+                    <div class="product-footer">
+                        <div class="product-price">R$ 5,00 <span class="product-unit">/ un</span></div>
+                    </div>
+                </div>
+
+                <div class="product-card">
+                    <div class="product-name">Gota d'Ouro Maracujá</div>
+                    <div class="product-desc">Esfera fina de chocolate derretendo em uma explosiva ganache de maracujá.</div>
+                    <div class="product-footer">
+                        <div class="product-price">R$ 5,00 <span class="product-unit">/ un</span></div>
+                    </div>
+                </div>
+
+                <div class="product-card">
+                    <div class="product-name">Enlace Uva e Marsala</div>
+                    <div class="product-desc">Uva vitória fresca completamente imersa num suave creme reduzido no Vinho Marsala.</div>
+                    <div class="product-footer">
+                        <div class="product-price">R$ 5,50 <span class="product-unit">/ un</span></div>
+                    </div>
+                    <span class="badge">Signature</span>
+                </div>
+            </div>
+        </section>
+
+        <!-- DOCINHOS ESPECIAIS -->
+        <section class="category" id="especiais">
+            <div class="category-header">
+                <div class="category-image-wrap">
+                    <img src="img/special_sweets_1774968609135.png" alt="Doces Especiais para Casamento">
+                </div>
+                <div class="category-info">
+                    <h2>Docinhos Especiais</h2>
+                    <p class="category-desc">Nossa coleção sublime. Ingredientes botânicos, nozes requintadas e técnicas de pâtisserie europeia criam doces desenhados para deixar lembranças eternas.</p>
+                </div>
+            </div>
+            
+            <div class="products-grid">
+                <div class="product-card">
+                    <div class="product-name">Chama de Manga</div>
+                    <div class="product-desc">Corajoso bombom com pureza da manga doce e o leve calor da geleia de pimenta no final.</div>
+                    <div class="product-footer">
+                        <div class="product-price">R$ 6,00 <span class="product-unit">/ un</span></div>
+                    </div>
+                    <span class="badge">Ousado</span>
+                </div>
+
+                <div class="product-card">
+                    <div class="product-name">Caramelo e Flor de Sal</div>
+                    <div class="product-desc">O choque luxuoso e atemporal entre o caramelo puxa-puxa e cristais de flor de sal marinha.</div>
+                    <div class="product-footer">
+                        <div class="product-price">R$ 6,00 <span class="product-unit">/ un</span></div>
+                    </div>
+                </div>
+
+                <div class="product-card">
+                    <div class="product-name">Requinte Pistache</div>
+                    <div class="product-desc">A coroa de nossas criações. Intensa experiência de pistaches iranianos em camadas variadas.</div>
+                    <div class="product-footer">
+                        <div class="product-price">R$ 6,00 <span class="product-unit">/ un</span></div>
+                    </div>
+                    <span class="badge">Premium</span>
+                </div>
+
+                <div class="product-card">
+                    <div class="product-name">Damasco Reale</div>
+                    <div class="product-desc">Damasco turco meticulosamente aberto e preenchido com recheio cremoso e suave de nuts.</div>
+                    <div class="product-footer">
+                        <div class="product-price">R$ 5,00 <span class="product-unit">/ un</span></div>
+                    </div>
+                </div>
+
+                <div class="product-card">
+                    <div class="product-name">Camafeu de Nozes</div>
+                    <div class="product-desc">Um clássico da realeza. Massa aveludada de nozes chilenas banhada em um casulo de fondant.</div>
+                    <div class="product-footer">
+                        <div class="product-price">R$ 5,50 <span class="product-unit">/ un</span></div>
+                    </div>
+                    <span class="badge">Clássico</span>
+                </div>
+
+                <div class="product-card">
+                    <div class="product-name">Suculenta Amande</div>
+                    <div class="product-desc">Intrigante design de suculenta em ganache blend escuro, acomodando amêndoas torradas.</div>
+                    <div class="product-footer">
+                        <div class="product-price">R$ 6,00 <span class="product-unit">/ un</span></div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- TARTELETES -->
+        <section class="category" id="tarteletes">
+            <div class="category-header">
+                <div class="category-info">
+                    <h2>Tarteletes Gourmet</h2>
+                    <p class="category-desc">A arquitetura da confeitaria. Miniaturas suntuosas de tortas clássicas que proporcionam uma viagem de texturas: da base amanteigada crocante ao topo macio e coroado.</p>
+                </div>
+                <div class="category-image-wrap">
+                    <img src="img/gourmet_tartlets_1774968590514.png" alt="Tarteletes Finos">
+                </div>
+            </div>
+            
+            <div class="products-grid">
+                <div class="product-card">
+                    <div class="product-name">Banoffee Dourada</div>
+                    <div class="product-desc">Doce de leite artesanal robusto, banana braseada, topo de chantininho e pó de canela asiática.</div>
+                    <div class="product-footer">
+                        <div class="product-price">R$ 6,50 <span class="product-unit">/ un</span></div>
+                    </div>
+                </div>
+
+                <div class="product-card">
+                    <div class="product-name">Cheesecake Rouge</div>
+                    <div class="product-desc">Creme base sedoso de cream cheese contrastando com uma brilhante calda rústica de frutas vermelhas.</div>
+                    <div class="product-footer">
+                        <div class="product-price">R$ 7,00 <span class="product-unit">/ un</span></div>
+                    </div>
+                </div>
+
+                <div class="product-card">
+                    <div class="product-name">Limão Maçaricado</div>
+                    <div class="product-desc">Curd vibrante de limão siciliano recoberto por fartas ondas de merengue suíço perfeitamente douradas.</div>
+                    <div class="product-footer">
+                        <div class="product-price">R$ 7,00 <span class="product-unit">/ un</span></div>
+                    </div>
+                    <span class="badge">Favorito</span>
+                </div>
+
+                <div class="product-card">
+                    <div class="product-name">Doce de Leite & Amora</div>
+                    <div class="product-desc">Base profunda de doce de leite sob a acidez requintada de uma autêntica geleia de amora.</div>
+                    <div class="product-footer">
+                        <div class="product-price">R$ 8,00 <span class="product-unit">/ un</span></div>
+                    </div>
+                    <span class="badge">Premium</span>
+                </div>
+
+                <div class="product-card">
+                    <div class="product-name">Petit Verrier</div>
+                    <div class="product-desc">Uma criação autoral em tamanho delicado com a seleção de ingredientes mais raros de nossa cozinha.</div>
+                    <div class="product-footer">
+                        <div class="product-price">R$ 8,00 <span class="product-unit">/ un</span></div>
+                    </div>
+                    <span class="badge">Signature</span>
+                </div>
+            </div>
+
+            <div class="info-box">
+                <h3>📦 Informações e Condições</h3>
+                <p><strong>Prazos:</strong> As encomendas devem ser feitas com mínimo de 30 dias de antecedência, podendo ser reservadas em até 6 meses.</p>
+                <p style="margin-top: 10px;"><strong>Cortesia Especial:</strong> Para encomendas a partir de 300 doces finos, oferecemos entrega cuidadosa e montagem cênica de alto padrão cortesia.</p>
+            </div>
+        </section>
+
+    </main>
+
+    <footer class="footer">
+        <h3>Faça Sua Encomenda</h3>
+        <p style="color: var(--text-muted); margin-bottom: 30px; font-size: 1.1rem;">Disponibilidade limitada por mês. Reserve agora sua data maravilhosa.</p>
+        <div class="contact-info">
+            <a href="https://wa.me/5522974053078" target="_blank" class="contact-item" style="text-decoration: none;">
+                <span class="icon" style="color: #25D366;"><i class="fab fa-whatsapp"></i></span>
+                <span><strong>WhatsApp:</strong> (22) 97405-3078</span>
+            </a>
+            <a href="https://instagram.com/rosimererodrigues.docesfinos" target="_blank" class="contact-item" style="text-decoration: none;">
+                <span class="icon" style="color: #E1306C;"><i class="fab fa-instagram"></i></span>
+                <span><strong>Instagram:</strong> @rosimererodrigues.docesfinos</span>
+            </a>
+            <div class="contact-item">
+                <span class="icon pix-icon">💳</span>
+                <span><strong>Chave PIX:</strong> 15373846783</span>
+            </div>
+            <div class="contact-item" style="width: 100%; margin-top: 15px; justify-content: center;">
+                <span class="icon" style="color: var(--primary-color);">📍</span>
+                <span><strong>Endereço:</strong> Jardim Bela Vista, Rio das Ostras - RJ, 28895-514</span>
+            </div>
+        </div>
+        <p style="margin-top: 50px; color: #555; font-size: 0.85rem;">&copy; 2026 Rosimeri Rodrigues - Doces Finos. Todos os direitos reservados.</p>
+    </footer>
+
+    <script>
+        document.querySelectorAll('.nav-btn').forEach(button => {
+            button.addEventListener('click', function(e) {
+                // Prevenir scroll rápido original, faremos um smooth scroll de compensação se necessário
+                e.preventDefault();
+                
+                const category = this.getAttribute('data-category');
+                
+                // Remover classe active de todos os botões
+                document.querySelectorAll('.nav-btn').forEach(btn => {
+                    btn.classList.remove('active');
+                });
+                
+                // Adicionar classe active ao botão clicado
+                this.classList.add('active');
+                
+                // Esconder todas as categorias
+                document.querySelectorAll('.category').forEach(cat => {
+                    cat.classList.remove('active');
+                });
+                
+                // Mostrar categoria selecionada
+                const activeCategory = document.getElementById(category);
+                activeCategory.classList.add('active');
+                
+                // Scroll suave para o conteúdo principal, compensando o header grudado
+                const yOffset = -100; // Compensação devido ao nav-container sticky
+                const y = activeCategory.getBoundingClientRect().top + window.pageYOffset + yOffset;
+                
+                window.scrollTo({top: y, behavior: 'smooth'});
+            });
+        });
+    </script>
+</body>
+</html>
