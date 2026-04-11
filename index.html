@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Rosimeri Rodrigues - Doces Finos Artesanais</title>
+    <title>Rosimere Rodrigues Doces Finos - Arte em Confeitaria</title>
     <!-- Importing Google Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -49,7 +49,7 @@
             align-items: center;
             justify-content: center;
             text-align: center;
-            background-image: url('img/premium_bg_1774968654331.png');
+            background-image: url('img/variedade_doces.jpg');
             background-size: cover;
             background-position: center;
             background-attachment: fixed;
@@ -253,7 +253,7 @@
         .product-card {
             background: var(--bg-lighter);
             border-radius: 8px;
-            padding: 25px;
+            overflow: hidden;
             position: relative;
             border: 1px solid rgba(255,255,255,0.03);
             transition: all 0.3s ease;
@@ -268,58 +268,51 @@
             background: #2b2422;
         }
 
+        .product-img-container {
+            width: 100%;
+            height: 200px;
+            overflow: hidden;
+        }
+
+        .product-img-container img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.5s ease;
+        }
+
+        .product-card:hover .product-img-container img {
+            transform: scale(1.1);
+        }
+
+        .product-content {
+            padding: 20px;
+            flex-grow: 1;
+            display: flex;
+            flex-direction: column;
+        }
+
         .product-name {
             font-family: 'Playfair Display', serif;
             font-size: 1.4rem;
             color: var(--accent);
             margin-bottom: 12px;
-            padding-right: 70px; /* Space for badge if needed */
         }
 
         .product-desc {
             font-size: 0.95rem;
             color: var(--text-muted);
+            margin-bottom: 15px;
             flex-grow: 1;
-            margin-bottom: 25px;
         }
 
         .product-footer {
-            display: flex;
-            justify-content: space-between;
-            align-items: flex-end;
             margin-top: auto;
             border-top: 1px dashed rgba(255,255,255,0.1);
             padding-top: 15px;
+            text-align: center;
         }
 
-        .product-price {
-            font-size: 1.5rem;
-            color: var(--primary-color);
-            font-weight: 500;
-        }
-
-        .product-unit {
-            font-size: 0.85rem;
-            color: #888;
-            font-weight: normal;
-        }
-
-        .badge {
-            position: absolute;
-            top: 25px;
-            right: 25px;
-            background: var(--primary-color);
-            color: var(--bg-color);
-            padding: 4px 12px;
-            border-radius: 12px;
-            font-size: 0.7rem;
-            font-weight: bold;
-            text-transform: uppercase;
-            letter-spacing: 1px;
-            box-shadow: 0 2px 8px rgba(212, 175, 55, 0.3);
-        }
-
-        /* Info Box */
         .info-box {
             background: rgba(212, 175, 55, 0.05);
             border: 1px solid rgba(212, 175, 55, 0.2);
@@ -343,79 +336,44 @@
             padding: 0 15px;
         }
 
-        .info-box h3 {
-            color: var(--primary-color);
-            font-size: 1.8rem;
-            margin-bottom: 20px;
-        }
-
-        .info-box p {
-            color: var(--text-muted);
-            margin-bottom: 10px;
-            font-size: 1.1rem;
-        }
-
-        .info-box strong {
-            color: var(--accent);
-            font-weight: 500;
-        }
-
-        /* Footer / Contact */
         .footer {
-            background: #110e0c;
-            padding: 80px 20px;
+            background: #0f0d0c;
+            padding: 80px 20px 40px;
             text-align: center;
             border-top: 1px solid rgba(212, 175, 55, 0.1);
-            margin-top: 40px;
         }
 
         .footer h3 {
-            font-size: 2.2rem;
+            font-family: 'Playfair Display', serif;
+            font-size: 2.5rem;
             color: var(--primary-color);
-            margin-bottom: 40px;
+            margin-bottom: 20px;
         }
 
         .contact-info {
             display: flex;
             justify-content: center;
-            gap: 30px;
+            gap: 40px;
             flex-wrap: wrap;
+            max-width: 1000px;
+            margin: 0 auto;
         }
 
         .contact-item {
             display: flex;
             align-items: center;
-            gap: 15px;
-            background: rgba(255,255,255,0.02);
-            padding: 20px 40px;
-            border-radius: 40px;
-            border: 1px solid rgba(255,255,255,0.05);
-            transition: all 0.3s;
-        }
-
-        .contact-item:hover {
-            border-color: var(--primary-color);
-            background: rgba(212, 175, 55, 0.05);
-            transform: translateY(-3px);
-            box-shadow: 0 5px 15px rgba(0,0,0,0.3);
-        }
-
-        .contact-item .icon {
-            font-size: 1.5rem;
-        }
-
-        .contact-item span {
-            font-size: 1.1rem;
+            gap: 12px;
             color: var(--text-main);
+            font-size: 1.1rem;
+        }
+
+        .icon {
+            font-size: 1.5rem;
         }
 
         @media (max-width: 600px) {
             .hero h1 { font-size: 4rem; }
-            .hero p { font-size: 0.85rem; letter-spacing: 3px; }
-            .hero p::before, .hero p::after { width: 20px; }
-            .contact-item { width: 100%; justify-content: center; }
-            .product-name { font-size: 1.2rem; }
-            .product-price { font-size: 1.3rem; }
+            .contact-info { flex-direction: column; align-items: center; gap: 20px; }
         }
     </style>
 </head>
@@ -424,253 +382,124 @@
     <header class="hero">
         <div class="hero-content">
             <h1>Rosimere Rodrigues</h1>
-            <p>Bolos & Doces finos</p>
+            <p>Doces Finos</p>
         </div>
     </header>
 
-    <div class="nav-container">
+    <nav class="nav-container">
         <div class="nav-buttons">
-            <button class="nav-btn active" data-category="trufas">Trufas</button>
-            <button class="nav-btn" data-category="brigadeiro">Brigadeiros</button>
-            <button class="nav-btn" data-category="chocolates">Chocolates Gourmet</button>
+            <button class="nav-btn active" data-category="brigadeiros">Brigadeiros</button>
             <button class="nav-btn" data-category="especiais">Docinhos Especiais</button>
+            <button class="nav-btn" data-category="chocolates">Chocolates Delícia</button>
             <button class="nav-btn" data-category="tarteletes">Tarteletes</button>
+            <button class="nav-btn" data-category="suculentas">Suculentas</button>
+            <button class="nav-btn" data-category="petit">Petit Verri</button>
         </div>
-    </div>
+    </nav>
 
     <main class="main-content">
         
-        <!-- TRUFAS -->
-        <section class="category active" id="trufas">
-            <div class="category-header">
-                <div class="category-info">
-                    <h2>Trufas Artesanais</h2>
-                    <p class="category-desc">Nossas trufas são verdadeiras joias. Doces irresistíveis banhados em chocolate nobre, com textura aveludada e sabores perfeitamente equilibrados que surpreendem a cada mordida.</p>
-                </div>
-                <div class="category-image-wrap">
-                    <img src="img/premium_truffle_1774968537458.png" alt="Trufas Finas Artesanais">
-                </div>
-            </div>
-            
-            <div class="products-grid">
-                <div class="product-card">
-                    <div class="product-name">Ao Leite com Licor</div>
-                    <div class="product-desc">Trufa de chocolate ao leite nobre com delicados toques de licor artesanal.</div>
-                    <div class="product-footer">
-                        <div class="product-price">R$ 3,70 <span class="product-unit">/ un</span></div>
-                    </div>
-                    <span class="badge">Popular</span>
-                </div>
-
-                <div class="product-card">
-                    <div class="product-name">Chocolate Branco</div>
-                    <div class="product-desc">Trufa premium com ganache macia de chocolate branco selecionado.</div>
-                    <div class="product-footer">
-                        <div class="product-price">R$ 3,70 <span class="product-unit">/ un</span></div>
-                    </div>
-                </div>
-
-                <div class="product-card">
-                    <div class="product-name">Ninho com Nutella®</div>
-                    <div class="product-desc">Irresistível e cremosa combinação do puro leite Ninho com creme de avelã Nutella.</div>
-                    <div class="product-footer">
-                        <div class="product-price">R$ 3,70 <span class="product-unit">/ un</span></div>
-                    </div>
-                    <span class="badge">Favorito</span>
-                </div>
-
-                <div class="product-card">
-                    <div class="product-name">Classic Banana</div>
-                    <div class="product-desc">Trufa aveludada com um delicado e aromático sabor de banana caramelizada.</div>
-                    <div class="product-footer">
-                        <div class="product-price">R$ 3,70 <span class="product-unit">/ un</span></div>
-                    </div>
-                </div>
-
-                <div class="product-card">
-                    <div class="product-name">Refrescância Maracujá</div>
-                    <div class="product-desc">Trufa cítrica e refrescante, equilibrando o doce do chocolate com o azedinho da fruta.</div>
-                    <div class="product-footer">
-                        <div class="product-price">R$ 3,70 <span class="product-unit">/ un</span></div>
-                    </div>
-                </div>
-
-                <div class="product-card">
-                    <div class="product-name">Ninho e Maracujá</div>
-                    <div class="product-desc">A perfeita harmonia e cremosidade do Ninho contrastando com o sabor vivo do maracujá.</div>
-                    <div class="product-footer">
-                        <div class="product-price">R$ 3,50 <span class="product-unit">/ un</span></div>
-                    </div>
-                </div>
-            </div>
-
-            <div class="info-box">
-                <h3>✧ Experiência Exclusiva</h3>
-                <p>Nossas trufas são preparadas com ingredientes premium e podem ser personalizadas.</p>
-                <p>Consulte sobre opções de tamanhos comemorativos para os seus momentos especiais e eventos!</p>
-            </div>
-        </section>
-
         <!-- BRIGADEIROS -->
-        <section class="category" id="brigadeiro">
+        <section class="category active" id="brigadeiros">
             <div class="category-header">
                 <div class="category-image-wrap">
-                    <img src="img/gourmet_brigadeiro_1774968552883.png" alt="Brigadeiros Gourmet">
+                    <img src="img/brigadeiro_gourmet_belga.jpg" alt="Brigadeiros">
                 </div>
                 <div class="category-info">
-                    <h2>Brigadeiros Gourmet</h2>
-                    <p class="category-desc">Uma reimaginação luxuosa do clássico brasileiro. Textura incrivelmente cremosa, enrolados meticulosamente e finalizados com confeitos belgas e nuts nobres.</p>
+                    <h2>Brigadeiros</h2>
+                    <p class="category-desc">A essência da doçura brasileira em versões gourmet, com texturas aveludadas e ingredientes de altíssima qualidade.</p>
                 </div>
             </div>
             
             <div class="products-grid">
                 <div class="product-card">
-                    <div class="product-name">Brigadeiro Belga</div>
-                    <div class="product-desc">O autêntico brigadeiro com chocolate blend, envolto em puro granulado belga premium.</div>
-                    <div class="product-footer">
-                        <div class="product-price">R$ 5,50 <span class="product-unit">/ un</span></div>
+                    <div class="product-img-container">
+                        <img src="img/brigadeiro_gourmet_belga.jpg" alt="Brigadeiro Gourmet Belga">
                     </div>
-                    <span class="badge">Premium</span>
-                </div>
-
-                <div class="product-card">
-                    <div class="product-name">Bicho de Pé Silk</div>
-                    <div class="product-desc">Textura sedosa e o irresistível e nostálgico sabor de morango fresco.</div>
-                    <div class="product-footer">
-                        <div class="product-price">R$ 5,50 <span class="product-unit">/ un</span></div>
+                    <div class="product-content">
+                        <div class="product-name">Brigadeiro Gourmet Belga</div>
+                        <div class="product-desc">O clássico absoluto com chocolate belga e granulado premium.</div>
                     </div>
                 </div>
 
                 <div class="product-card">
-                    <div class="product-name">Romeu e Julieta</div>
-                    <div class="product-desc">Brigadeiro de queijo cremoso harmonizado elegantemente com doce de goiaba.</div>
-                    <div class="product-footer">
-                        <div class="product-price">R$ 4,70 <span class="product-unit">/ un</span></div>
+                    <div class="product-img-container">
+                        <img src="img/bicho_de_pe_morango.jpg" alt="Bicho de Pé Morango">
+                    </div>
+                    <div class="product-content">
+                        <div class="product-name">Bicho de Pé Morango</div>
+                        <div class="product-desc">O sabor nostálgico do morango em uma textura cremosa e irresistível.</div>
                     </div>
                 </div>
 
                 <div class="product-card">
-                    <div class="product-name">Crème Brûlée</div>
-                    <div class="product-desc">Delicada massa de fava de baunilha sob uma inconfundível casquinha de açúcar maçaricado.</div>
-                    <div class="product-footer">
-                        <div class="product-price">R$ 4,00 <span class="product-unit">/ un</span></div>
+                    <div class="product-img-container">
+                        <img src="img/romeu_e_julieta.jpg" alt="Romeu e Julieta">
                     </div>
-                    <span class="badge">Signature</span>
-                </div>
-
-                <div class="product-card">
-                    <div class="product-name">Ninho com Nutella®</div>
-                    <div class="product-desc">O queridinho em versão brigadeiro. Leite maduro com avelãs intensas.</div>
-                    <div class="product-footer">
-                        <div class="product-price">R$ 4,20 <span class="product-unit">/ un</span></div>
-                    </div>
-                    <span class="badge">Favorito</span>
-                </div>
-
-                <div class="product-card">
-                    <div class="product-name">Raffaello e Amêndoas</div>
-                    <div class="product-desc">Creme de coco sofisticado coroado com uma amêndoa dourada crocante.</div>
-                    <div class="product-footer">
-                        <div class="product-price">R$ 4,20 <span class="product-unit">/ un</span></div>
+                    <div class="product-content">
+                        <div class="product-name">Romeu e Julieta</div>
+                        <div class="product-desc">A combinação perfeita de queijo e goiabada em um doce sofisticado.</div>
                     </div>
                 </div>
 
                 <div class="product-card">
-                    <div class="product-name">Rocher Crunche</div>
-                    <div class="product-desc">A experiência do chocolate com avelã e texturas crocantes refinadas.</div>
-                    <div class="product-footer">
-                        <div class="product-price">R$ 4,20 <span class="product-unit">/ un</span></div>
+                    <div class="product-img-container">
+                        <img src="img/brule_baunilha.jpg" alt="Brulée Baunilha">
+                    </div>
+                    <div class="product-content">
+                        <div class="product-name">Brulée Baunilha</div>
+                        <div class="product-desc">Baunilha delicada com a icônica casquinha de açúcar maçaricado.</div>
                     </div>
                 </div>
 
                 <div class="product-card">
-                    <div class="product-name">Pistache Premium</div>
-                    <div class="product-desc">A joia verde. Brigadeiro cremoso de pistache envolto em pistaches recém-tostados.</div>
-                    <div class="product-footer">
-                        <div class="product-price">R$ 5,50 <span class="product-unit">/ un</span></div>
+                    <div class="product-img-container">
+                        <img src="img/ninho_com_nutella.jpg" alt="Ninho com Nutella">
                     </div>
-                    <span class="badge">Premium</span>
-                </div>
-            </div>
-        </section>
-
-        <!-- CHOCOLATES GOURMET -->
-        <section class="category" id="chocolates">
-            <div class="category-header">
-                <div class="category-info">
-                    <h2>Chocolates Delícia</h2>
-                    <p class="category-desc">Nossas obras de arte comestíveis. Bombons lapidados, copinhos de chocolate temperados à perfeição enriquecidos com recheios voluptuosos.</p>
-                </div>
-                <div class="category-image-wrap">
-                    <img src="img/fine_chocolates_1774968573671.png" alt="Bombons de Chocolate Finos">
-                </div>
-            </div>
-            
-            <div class="products-grid">
-                <div class="product-card">
-                    <div class="product-name">Copinho Rouge</div>
-                    <div class="product-desc">Copinho esculpido de chocolate preenchido com trufa rica de frutas vermelhas silvestres.</div>
-                    <div class="product-footer">
-                        <div class="product-price">R$ 5,50 <span class="product-unit">/ un</span></div>
+                    <div class="product-content">
+                        <div class="product-name">Ninho com Nutella</div>
+                        <div class="product-desc">Leite Ninho cremoso com recheio generoso de Nutella original.</div>
                     </div>
                 </div>
 
                 <div class="product-card">
-                    <div class="product-name">Pirâmide Ouro Doce</div>
-                    <div class="product-desc">Elegante pirâmide de chocolate branco recheada com puro doce de leite argentino.</div>
-                    <div class="product-footer">
-                        <div class="product-price">R$ 5,50 <span class="product-unit">/ un</span></div>
+                    <div class="product-img-container">
+                        <img src="img/raffaello_amendoa.jpg" alt="Raffaello Amêndoa">
+                    </div>
+                    <div class="product-content">
+                        <div class="product-name">Raffaello Amêndoa</div>
+                        <div class="product-desc">Inspirado no clássico, com coco e amêndoa inteira.</div>
                     </div>
                 </div>
 
                 <div class="product-card">
-                    <div class="product-name">Caixeta Morango Oculto</div>
-                    <div class="product-desc">Caixeta branca abraçando um creme de morango levemente aerado.</div>
-                    <div class="product-footer">
-                        <div class="product-price">R$ 5,50 <span class="product-unit">/ un</span></div>
+                    <div class="product-img-container">
+                        <img src="img/ferrero_rocher.jpg" alt="Ferrero Rocher">
+                    </div>
+                    <div class="product-content">
+                        <div class="product-name">Ferrero Rocher</div>
+                        <div class="product-desc">Chocolate intenso com avelãs e textura crocante.</div>
                     </div>
                 </div>
 
                 <div class="product-card">
-                    <div class="product-name">Jardim de Physalis</div>
-                    <div class="product-desc">Copinho contrastante de chocolate escuro adornado com creme Ninho e uma Physalis fresca.</div>
-                    <div class="product-footer">
-                        <div class="product-price">R$ 5,50 <span class="product-unit">/ un</span></div>
+                    <div class="product-img-container">
+                        <img src="img/churros.jpg" alt="Churros">
                     </div>
-                    <span class="badge">Exótico</span>
-                </div>
-
-                <div class="product-card">
-                    <div class="product-name">Aliança de Casamento</div>
-                    <div class="product-desc">Bombom de frutas vermelhas polvilhado e decorado, perfeito para celebrações matrimoniais.</div>
-                    <div class="product-footer">
-                        <div class="product-price">R$ 5,50 <span class="product-unit">/ un</span></div>
+                    <div class="product-content">
+                        <div class="product-name">Churros</div>
+                        <div class="product-desc">Doce de leite e canela em um brigadeiro que remete à infância.</div>
                     </div>
                 </div>
 
                 <div class="product-card">
-                    <div class="product-name">Coração Cappuccino</div>
-                    <div class="product-desc">As notas torradas do café nobre encapsuladas num coração de chocolate ao leite.</div>
-                    <div class="product-footer">
-                        <div class="product-price">R$ 5,00 <span class="product-unit">/ un</span></div>
+                    <div class="product-img-container">
+                        <img src="img/pistache_brigadeiro.jpg" alt="Pistache Brigadeiro">
                     </div>
-                </div>
-
-                <div class="product-card">
-                    <div class="product-name">Gota d'Ouro Maracujá</div>
-                    <div class="product-desc">Esfera fina de chocolate derretendo em uma explosiva ganache de maracujá.</div>
-                    <div class="product-footer">
-                        <div class="product-price">R$ 5,00 <span class="product-unit">/ un</span></div>
+                    <div class="product-content">
+                        <div class="product-name">Pistache Brigadeiro</div>
+                        <div class="product-desc">O sabor nobre do pistache em uma massa ultra cremosa.</div>
                     </div>
-                </div>
-
-                <div class="product-card">
-                    <div class="product-name">Enlace Uva e Marsala</div>
-                    <div class="product-desc">Uva vitória fresca completamente imersa num suave creme reduzido no Vinho Marsala.</div>
-                    <div class="product-footer">
-                        <div class="product-price">R$ 5,50 <span class="product-unit">/ un</span></div>
-                    </div>
-                    <span class="badge">Signature</span>
                 </div>
             </div>
         </section>
@@ -679,63 +508,227 @@
         <section class="category" id="especiais">
             <div class="category-header">
                 <div class="category-image-wrap">
-                    <img src="img/special_sweets_1774968609135.png" alt="Doces Especiais para Casamento">
+                    <img src="img/bombom_manga_pimenta.jpg" alt="Docinhos Especiais">
                 </div>
                 <div class="category-info">
                     <h2>Docinhos Especiais</h2>
-                    <p class="category-desc">Nossa coleção sublime. Ingredientes botânicos, nozes requintadas e técnicas de pâtisserie europeia criam doces desenhados para deixar lembranças eternas.</p>
+                    <p class="category-desc">Criações exclusivas que unem sabores contrastantes e texturas refinadas para paladares exigentes.</p>
                 </div>
             </div>
             
             <div class="products-grid">
                 <div class="product-card">
-                    <div class="product-name">Chama de Manga</div>
-                    <div class="product-desc">Corajoso bombom com pureza da manga doce e o leve calor da geleia de pimenta no final.</div>
-                    <div class="product-footer">
-                        <div class="product-price">R$ 6,00 <span class="product-unit">/ un</span></div>
+                    <div class="product-img-container">
+                        <img src="img/bombom_manga_pimenta.jpg" alt="Bombom Manga com Pimenta">
                     </div>
-                    <span class="badge">Ousado</span>
-                </div>
-
-                <div class="product-card">
-                    <div class="product-name">Caramelo e Flor de Sal</div>
-                    <div class="product-desc">O choque luxuoso e atemporal entre o caramelo puxa-puxa e cristais de flor de sal marinha.</div>
-                    <div class="product-footer">
-                        <div class="product-price">R$ 6,00 <span class="product-unit">/ un</span></div>
+                    <div class="product-content">
+                        <div class="product-name">Bombom Manga com Pimenta</div>
+                        <div class="product-desc">O frescor da manga com um toque picante de pimenta.</div>
                     </div>
                 </div>
 
                 <div class="product-card">
-                    <div class="product-name">Requinte Pistache</div>
-                    <div class="product-desc">A coroa de nossas criações. Intensa experiência de pistaches iranianos em camadas variadas.</div>
-                    <div class="product-footer">
-                        <div class="product-price">R$ 6,00 <span class="product-unit">/ un</span></div>
+                    <div class="product-img-container">
+                        <img src="img/bombom_caramelo_flor_de_sal.jpg" alt="Bombom Caramelo com Flor de Sal">
                     </div>
-                    <span class="badge">Premium</span>
-                </div>
-
-                <div class="product-card">
-                    <div class="product-name">Damasco Reale</div>
-                    <div class="product-desc">Damasco turco meticulosamente aberto e preenchido com recheio cremoso e suave de nuts.</div>
-                    <div class="product-footer">
-                        <div class="product-price">R$ 5,00 <span class="product-unit">/ un</span></div>
+                    <div class="product-content">
+                        <div class="product-name">Bombom Caramelo com Flor de Sal</div>
+                        <div class="product-desc">Equilíbrio perfeito entre o doce do caramelo e o salgado da flor de sal.</div>
                     </div>
                 </div>
 
                 <div class="product-card">
-                    <div class="product-name">Camafeu de Nozes</div>
-                    <div class="product-desc">Um clássico da realeza. Massa aveludada de nozes chilenas banhada em um casulo de fondant.</div>
-                    <div class="product-footer">
-                        <div class="product-price">R$ 5,50 <span class="product-unit">/ un</span></div>
+                    <div class="product-img-container">
+                        <img src="img/requinte_de_pistache.jpg" alt="Requinte de Pistache">
                     </div>
-                    <span class="badge">Clássico</span>
+                    <div class="product-content">
+                        <div class="product-name">Requinte de Pistache</div>
+                        <div class="product-desc">Uma joia de pistache com acabamento sofisticado.</div>
+                    </div>
                 </div>
 
                 <div class="product-card">
-                    <div class="product-name">Suculenta Amande</div>
-                    <div class="product-desc">Intrigante design de suculenta em ganache blend escuro, acomodando amêndoas torradas.</div>
-                    <div class="product-footer">
-                        <div class="product-price">R$ 6,00 <span class="product-unit">/ un</span></div>
+                    <div class="product-img-container">
+                        <img src="img/ball_de_cookies.jpg" alt="Ball de Cookies">
+                    </div>
+                    <div class="product-content">
+                        <div class="product-name">Ball de Cookies</div>
+                        <div class="product-desc">Esfera crocante recheada com pedaços de cookies artesanais.</div>
+                    </div>
+                </div>
+
+                <div class="product-card">
+                    <div class="product-img-container">
+                        <img src="img/damasco_recheado.jpg" alt="Damasco Recheado">
+                    </div>
+                    <div class="product-content">
+                        <div class="product-name">Damasco Recheado</div>
+                        <div class="product-desc">Damascos selecionados recheados com creme de nozes.</div>
+                    </div>
+                </div>
+
+                <div class="product-card">
+                    <div class="product-img-container">
+                        <img src="img/camafeu_de_nozes.jpg" alt="Camafeu de Nozes">
+                    </div>
+                    <div class="product-content">
+                        <div class="product-name">Camafeu de Nozes</div>
+                        <div class="product-desc">O clássico elegante de nozes com banho de fondant.</div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- CHOCOLATES DELÍCIA -->
+        <section class="category" id="chocolates">
+            <div class="category-header">
+                <div class="category-image-wrap">
+                    <img src="img/copinho_trufas_vermelhas.jpg" alt="Chocolates Delícia">
+                </div>
+                <div class="category-info">
+                    <h2>Chocolates Delícia</h2>
+                    <p class="category-desc">Uma seleção de bombons e copinhos de chocolate com recheios surpreendentes e decorações artísticas.</p>
+                </div>
+            </div>
+            
+            <div class="products-grid">
+                <div class="product-card">
+                    <div class="product-img-container">
+                        <img src="img/copinho_trufas_vermelhas.jpg" alt="Copinho Trufas Vermelhas">
+                    </div>
+                    <div class="product-content">
+                        <div class="product-name">Copinho Trufas Vermelhas</div>
+                        <div class="product-desc">Chocolate recheado com trufa de frutas vermelhas.</div>
+                    </div>
+                </div>
+
+                <div class="product-card">
+                    <div class="product-img-container">
+                        <img src="img/piramide_doce_de_leite.jpg" alt="Pirâmide Doce de Leite">
+                    </div>
+                    <div class="product-content">
+                        <div class="product-name">Pirâmide Doce de Leite</div>
+                        <div class="product-desc">Pirâmide de chocolate com coração de doce de leite.</div>
+                    </div>
+                </div>
+
+                <div class="product-card">
+                    <div class="product-img-container">
+                        <img src="img/piramide_ovomaltine.jpg" alt="Pirâmide Ovomaltine">
+                    </div>
+                    <div class="product-content">
+                        <div class="product-name">Pirâmide Ovomaltine</div>
+                        <div class="product-desc">Chocolate com a crocância inconfundível de Ovomaltine.</div>
+                    </div>
+                </div>
+
+                <div class="product-card">
+                    <div class="product-img-container">
+                        <img src="img/caixeta_de_morango.jpg" alt="Caixeta de Morango">
+                    </div>
+                    <div class="product-content">
+                        <div class="product-name">Caixeta de Morango</div>
+                        <div class="product-desc">Cestinha de chocolate com morango fresco e creme.</div>
+                    </div>
+                </div>
+
+                <div class="product-card">
+                    <div class="product-img-container">
+                        <img src="img/copinho_de_physalis.jpg" alt="Copinho de Physalis">
+                    </div>
+                    <div class="product-content">
+                        <div class="product-name">Copinho de Physalis</div>
+                        <div class="product-desc">Elegante copinho decorado com a fruta Physalis.</div>
+                    </div>
+                </div>
+
+                <div class="product-card">
+                    <div class="product-img-container">
+                        <img src="img/copinho_de_nutella.jpg" alt="Copinho de Nutella">
+                    </div>
+                    <div class="product-content">
+                        <div class="product-name">Copinho de Nutella</div>
+                        <div class="product-desc">Puro chocolate com o creme de avelã mais amado.</div>
+                    </div>
+                </div>
+
+                <div class="product-card">
+                    <div class="product-img-container">
+                        <img src="img/bombom_frutas_vermelhas_alianca.jpg" alt="Bombom Frutas Vermelhas Aliança">
+                    </div>
+                    <div class="product-content">
+                        <div class="product-name">Bombom Frutas Vermelhas Aliança</div>
+                        <div class="product-desc">Bombom decorado ideal para casamentos.</div>
+                    </div>
+                </div>
+
+                <div class="product-card">
+                    <div class="product-img-container">
+                        <img src="img/coracao_de_capuccino.jpg" alt="Coração de Capuccino">
+                    </div>
+                    <div class="product-content">
+                        <div class="product-name">Coração de Capuccino</div>
+                        <div class="product-desc">Chocolate com notas de café e leite.</div>
+                    </div>
+                </div>
+
+                <div class="product-card">
+                    <div class="product-img-container">
+                        <img src="img/copinho_de_cereja.jpg" alt="Copinho de Cereja">
+                    </div>
+                    <div class="product-content">
+                        <div class="product-name">Copinho de Cereja</div>
+                        <div class="product-desc">Clássica combinação de chocolate e cereja em calda.</div>
+                    </div>
+                </div>
+
+                <div class="product-card">
+                    <div class="product-img-container">
+                        <img src="img/uva_e_marsala.jpg" alt="Uva e Marsala">
+                    </div>
+                    <div class="product-content">
+                        <div class="product-name">Uva e Marsala</div>
+                        <div class="product-desc">Uva fresca envolta em chocolate com toque de vinho.</div>
+                    </div>
+                </div>
+
+                <div class="product-card">
+                    <div class="product-img-container">
+                        <img src="img/copinho_chocolate_branco_preto.jpg" alt="Copinho Chocolate Branco e Preto">
+                    </div>
+                    <div class="product-content">
+                        <div class="product-name">Copinho Chocolate Branco e Preto</div>
+                        <div class="product-desc">Dueto de chocolates em um só doce.</div>
+                    </div>
+                </div>
+
+                <div class="product-card">
+                    <div class="product-img-container">
+                        <img src="img/cestinha_limao_frutas_vermelhas.jpg" alt="Cestinha Limão com Frutas Vermelhas">
+                    </div>
+                    <div class="product-content">
+                        <div class="product-name">Cestinha Limão com Frutas Vermelhas</div>
+                        <div class="product-desc">Contraste cítrico com a doçura das frutas vermelhas.</div>
+                    </div>
+                </div>
+
+                <div class="product-card">
+                    <div class="product-img-container">
+                        <img src="img/cestinha_de_uva.jpg" alt="Cestinha de Uva">
+                    </div>
+                    <div class="product-content">
+                        <div class="product-name">Cestinha de Uva</div>
+                        <div class="product-desc">Delicada cestinha com uvas verdes selecionadas.</div>
+                    </div>
+                </div>
+
+                <div class="product-card">
+                    <div class="product-img-container">
+                        <img src="img/gota_de_maracuja.jpg" alt="Gota de Maracujá">
+                    </div>
+                    <div class="product-content">
+                        <div class="product-name">Gota de Maracujá</div>
+                        <div class="product-desc">Chocolate com recheio cremoso e azedinho de maracujá.</div>
                     </div>
                 </div>
             </div>
@@ -744,66 +737,143 @@
         <!-- TARTELETES -->
         <section class="category" id="tarteletes">
             <div class="category-header">
-                <div class="category-info">
-                    <h2>Tarteletes Gourmet</h2>
-                    <p class="category-desc">A arquitetura da confeitaria. Miniaturas suntuosas de tortas clássicas que proporcionam uma viagem de texturas: da base amanteigada crocante ao topo macio e coroado.</p>
-                </div>
                 <div class="category-image-wrap">
-                    <img src="img/gourmet_tartlets_1774968590514.png" alt="Tarteletes Finos">
+                    <img src="img/tarteletes.jpg" alt="Tarteletes">
+                </div>
+                <div class="category-info">
+                    <h2>Tarteletes</h2>
+                    <p class="category-desc">Mini tortas com bases crocantes e recheios generosos que encantam pelo visual e sabor.</p>
                 </div>
             </div>
             
             <div class="products-grid">
                 <div class="product-card">
-                    <div class="product-name">Banoffee Dourada</div>
-                    <div class="product-desc">Doce de leite artesanal robusto, banana braseada, topo de chantininho e pó de canela asiática.</div>
-                    <div class="product-footer">
-                        <div class="product-price">R$ 6,50 <span class="product-unit">/ un</span></div>
+                    <div class="product-img-container">
+                        <img src="img/tartelete_banoffe.jpg" alt="Tartelete Banoffe">
+                    </div>
+                    <div class="product-content">
+                        <div class="product-name">Tartelete Banoffe</div>
+                        <div class="product-desc">Base crocante, doce de leite, banana e chantilly.</div>
                     </div>
                 </div>
 
                 <div class="product-card">
-                    <div class="product-name">Cheesecake Rouge</div>
-                    <div class="product-desc">Creme base sedoso de cream cheese contrastando com uma brilhante calda rústica de frutas vermelhas.</div>
-                    <div class="product-footer">
-                        <div class="product-price">R$ 7,00 <span class="product-unit">/ un</span></div>
+                    <div class="product-img-container">
+                        <img src="img/tartelete_cheesecake.jpg" alt="Tartelete Cheesecake">
+                    </div>
+                    <div class="product-content">
+                        <div class="product-name">Tartelete Cheesecake</div>
+                        <div class="product-desc">Creme de queijo leve com calda de frutas vermelhas.</div>
                     </div>
                 </div>
 
                 <div class="product-card">
-                    <div class="product-name">Limão Maçaricado</div>
-                    <div class="product-desc">Curd vibrante de limão siciliano recoberto por fartas ondas de merengue suíço perfeitamente douradas.</div>
-                    <div class="product-footer">
-                        <div class="product-price">R$ 7,00 <span class="product-unit">/ un</span></div>
+                    <div class="product-img-container">
+                        <img src="img/tartelete_limao.jpg" alt="Tartelete Limão">
                     </div>
-                    <span class="badge">Favorito</span>
+                    <div class="product-content">
+                        <div class="product-name">Tartelete Limão</div>
+                        <div class="product-desc">Creme de limão siciliano com merengue maçaricado.</div>
+                    </div>
                 </div>
 
                 <div class="product-card">
-                    <div class="product-name">Doce de Leite & Amora</div>
-                    <div class="product-desc">Base profunda de doce de leite sob a acidez requintada de uma autêntica geleia de amora.</div>
-                    <div class="product-footer">
-                        <div class="product-price">R$ 8,00 <span class="product-unit">/ un</span></div>
+                    <div class="product-img-container">
+                        <img src="img/tartelete_doce_de_leite_amora.jpg" alt="Tartelete Doce de Leite com Amora">
                     </div>
-                    <span class="badge">Premium</span>
-                </div>
-
-                <div class="product-card">
-                    <div class="product-name">Petit Verrier</div>
-                    <div class="product-desc">Uma criação autoral em tamanho delicado com a seleção de ingredientes mais raros de nossa cozinha.</div>
-                    <div class="product-footer">
-                        <div class="product-price">R$ 8,00 <span class="product-unit">/ un</span></div>
+                    <div class="product-content">
+                        <div class="product-name">Tartelete Doce de Leite com Amora</div>
+                        <div class="product-desc">Doce de leite artesanal com o toque ácido da amora.</div>
                     </div>
-                    <span class="badge">Signature</span>
                 </div>
-            </div>
-
-            <div class="info-box">
-                <h3>📦 Informações e Condições</h3>
-                <p><strong>Prazos:</strong> As encomendas devem ser feitas com mínimo de 30 dias de antecedência, podendo ser reservadas em até 6 meses.</p>
-                <p style="margin-top: 10px;"><strong>Cortesia Especial:</strong> Para encomendas a partir de 300 doces finos, oferecemos entrega cuidadosa e montagem cênica de alto padrão cortesia.</p>
             </div>
         </section>
+
+        <!-- SUCULENTAS -->
+        <section class="category" id="suculentas">
+            <div class="category-header">
+                <div class="category-image-wrap">
+                    <img src="img/suculenta_de_pistache.jpg" alt="Suculentas">
+                </div>
+                <div class="category-info">
+                    <h2>Suculentas</h2>
+                    <p class="category-desc">Doces esculpidos com perfeição, inspirados na beleza da natureza.</p>
+                </div>
+            </div>
+            
+            <div class="products-grid">
+                <div class="product-card">
+                    <div class="product-img-container">
+                        <img src="img/suculenta_de_pistache.jpg" alt="Suculenta de Pistache">
+                    </div>
+                    <div class="product-content">
+                        <div class="product-name">Suculenta de Pistache</div>
+                        <div class="product-desc">Modelada artesanalmente com sabor intenso de pistache.</div>
+                    </div>
+                </div>
+
+                <div class="product-card">
+                    <div class="product-img-container">
+                        <img src="img/suculenta_de_amendoas.jpg" alt="Suculenta de Amêndoas">
+                    </div>
+                    <div class="product-content">
+                        <div class="product-name">Suculenta de Amêndoas</div>
+                        <div class="product-desc">Delicadeza e sabor marcante das amêndoas nobres.</div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- PETIT VERRI -->
+        <section class="category" id="petit">
+            <div class="category-header">
+                <div class="category-image-wrap">
+                    <img src="img/petit_verri_frutas_vermelhas.jpg" alt="Petit Verri">
+                </div>
+                <div class="category-info">
+                    <h2>Petit Verri</h2>
+                    <p class="category-desc">Sobremesas em miniatura servidas em pequenos copos, proporcionando uma experiência de camadas.</p>
+                </div>
+            </div>
+            
+            <div class="products-grid">
+                <div class="product-card">
+                    <div class="product-img-container">
+                        <img src="img/petit_verri_frutas_vermelhas.jpg" alt="Petit Verri Frutas Vermelhas">
+                    </div>
+                    <div class="product-content">
+                        <div class="product-name">Petit Verri Frutas Vermelhas</div>
+                        <div class="product-desc">Camadas de creme e geleia artesanal de frutas vermelhas.</div>
+                    </div>
+                </div>
+
+                <div class="product-card">
+                    <div class="product-img-container">
+                        <img src="img/petit_verri_damasco.jpg" alt="Petit Verri Damasco">
+                    </div>
+                    <div class="product-content">
+                        <div class="product-name">Petit Verri Damasco</div>
+                        <div class="product-desc">Creme suave harmonizado com o sabor exótico do damasco.</div>
+                    </div>
+                </div>
+
+                <div class="product-card">
+                    <div class="product-img-container">
+                        <img src="img/petit_verri_romeu_e_julieta.jpg" alt="Petit Verri Romeu e Julieta">
+                    </div>
+                    <div class="product-content">
+                        <div class="product-name">Petit Verri Romeu e Julieta</div>
+                        <div class="product-desc">Reinterpretação da clássica combinação em camadas cremosas.</div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <div class="info-box">
+            <h3>✧ Experiência Exclusiva</h3>
+            <p>Nossos doces são preparados com ingredientes premium e técnicas artesanais.</p>
+            <p>Consulte sobre opções de personalização para os seus momentos especiais e eventos!</p>
+        </div>
 
     </main>
 
@@ -820,44 +890,34 @@
                 <span><strong>Instagram:</strong> @rosimererodrigues.docesfinos</span>
             </a>
             <div class="contact-item">
-                <span class="icon pix-icon">💳</span>
-                <span><strong>Chave PIX:</strong> 15373846783</span>
-            </div>
-            <div class="contact-item" style="width: 100%; margin-top: 15px; justify-content: center;">
                 <span class="icon" style="color: var(--primary-color);">📍</span>
-                <span><strong>Endereço:</strong> Jardim Bela Vista, Rio das Ostras - RJ, 28895-514</span>
+                <span><strong>Rio das Ostras - RJ</strong></span>
             </div>
         </div>
-        <p style="margin-top: 50px; color: #555; font-size: 0.85rem;">&copy; 2026 Rosimeri Rodrigues - Doces Finos. Todos os direitos reservados.</p>
+        <p style="margin-top: 50px; color: #555; font-size: 0.85rem;">&copy; 2026 Rosimere Rodrigues. Todos os direitos reservados.</p>
     </footer>
 
     <script>
         document.querySelectorAll('.nav-btn').forEach(button => {
             button.addEventListener('click', function(e) {
-                // Prevenir scroll rápido original, faremos um smooth scroll de compensação se necessário
                 e.preventDefault();
                 
                 const category = this.getAttribute('data-category');
                 
-                // Remover classe active de todos os botões
                 document.querySelectorAll('.nav-btn').forEach(btn => {
                     btn.classList.remove('active');
                 });
                 
-                // Adicionar classe active ao botão clicado
                 this.classList.add('active');
                 
-                // Esconder todas as categorias
                 document.querySelectorAll('.category').forEach(cat => {
                     cat.classList.remove('active');
                 });
                 
-                // Mostrar categoria selecionada
                 const activeCategory = document.getElementById(category);
                 activeCategory.classList.add('active');
                 
-                // Scroll suave para o conteúdo principal, compensando o header grudado
-                const yOffset = -100; // Compensação devido ao nav-container sticky
+                const yOffset = -100; 
                 const y = activeCategory.getBoundingClientRect().top + window.pageYOffset + yOffset;
                 
                 window.scrollTo({top: y, behavior: 'smooth'});
